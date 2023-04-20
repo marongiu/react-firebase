@@ -1,26 +1,24 @@
-import React from 'react'
-import SignIn from '../components/auth/SignIn'
-import { useAuthContext } from '../context/AuthContext'
-import TodoPage from '../components/todo/TodoPage';
+import React from "react";
+import SignIn from "../components/auth/SignIn";
+import { useAuthContext } from "../context/AuthContext";
+import TodoPage from "../components/todo/TodoPage";
 
 const Home = () => {
-  
-  const {user, logout, addTask} = useAuthContext();
+  const { user, logout, addTask } = useAuthContext();
 
-
-  if(!user) {
+  if (!user) {
     return (
-      <div className='home my-10'>
-        <SignIn/>
+      <div className="home my-10">
+        <SignIn />
       </div>
-    )
+    );
   }
 
   return (
-    <div className='home my-10'>
-      <TodoPage/>
+    <div className="home my-10">
+      <TodoPage />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

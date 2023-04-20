@@ -1,52 +1,61 @@
-import React, { useState } from 'react'
-import { useTodoContext } from '../../context/TodoContext'
+import React, { useState } from "react";
+
+import { useTodoContext } from "../../context/TodoContext";
+import { RiEdit2Line } from "react-icons/ri";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const Todo = ({ id, description, completed }) => {
-
   const { deleteTodo, updateTodo } = useTodoContext();
   const [inputUpdate, setInputUpdate] = useState(description);
-  const [inputVisibility, setInputVisibility ] = useState(false);
-
-  // Modifico valore dell'input
-  const handleInputUpdate = (e) => {
-    setInputUpdate(e.target.value);
-  }
+  const [inputVisibility, setInputVisibility] = useState(false);
 
   // On enter modifico il todo e nascondo l'input
   const handleKeyPress = (e) => {
-    if(e.key === "Enter") {
-       updateTodo(id, inputUpdate);
-       setInputVisibility(false)
+    if (e.key === "Enter") {
+      updateTodo(id, inputUpdate);
+      setInputVisibility(false);
     }
-  }
+  };
 
   return (
-    <li className='bg-gray-200 p-2 mb-2 flex justify-between items-center'>
-      <span className="description">
-        {description}
-      </span>
-      {
-        inputVisibility ? (
+    <li className="task-shadow bg-white py-3 px-5 mb-2 flex justify-between items-center">
+      <div className="todo flex items-center gap-2">
+        <input
+          type="checkbox"
+          checked={completed}
+          onChange={(e) => updateTodo(id, description, e.target.checked)}
+        />
+        {!inputVisibility ? (
+          <span className={`${completed && "line-through"} description`}>
+            {description}
+          </span>
+        ) : (
           <input
             type="text"
-            className='p-1'
-            placeholder='Modifica il todo...'
+            className="p-1 border-gray-500 border outline-none"
+            placeholder="Modifica il todo..."
             value={inputUpdate}
-            onChange={handleInputUpdate}
+            onChange={(e) => setInputUpdate(e.target.value)}
             onKeyPress={handleKeyPress}
           />
-        ) : ('')
-      }
-      <div className="commands flex gap-2">
-        <button className='bg-green-500 text-white text-xs py-1 px-3' onClick={() => setInputVisibility(true)}>
-          UPDATE
-        </button>
-        <button className='bg-red-500 text-white text-xs py-1 px-3' onClick={() => deleteTodo(id)}>
-          REMOVE
-        </button>
+        )}
+      </div>
+      <div className="commands flex gap-3">
+        {!inputVisibility && (
+          <RiEdit2Line
+            title="Modifica todo"
+            className="text-gray-500 text-xl cursor-pointer"
+            onClick={() => setInputVisibility(true)}
+          />
+        )}
+        <BsFillTrashFill
+          title="Rimuovi todo"
+          className=" text-black text-xl cursor-pointer"
+          onClick={() => deleteTodo(id)}
+        />
       </div>
     </li>
-  )
-}
+  );
+};
 
-export default Todo
+export default Todo;
