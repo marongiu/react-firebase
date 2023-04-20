@@ -1,5 +1,7 @@
 TodoApp 📝
 
+Live demo: https://starlit-seahorse-2f7e93.netlify.app/
+
 [![React Version](https://img.shields.io/badge/react-v17.0.2-blue.svg?logo=react)](https://github.com/facebook/react/releases/tag/v17.0.2)
 [![Firebase Version](https://img.shields.io/badge/firebase-v8.6.1-orange.svg?logo=firebase)](https://firebase.google.com/docs/release-notes)
 
