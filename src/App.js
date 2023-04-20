@@ -27,6 +27,7 @@ function App() {
             }
           />
           <Route path="/signup" element={<SignUp />} />
+          
           <Route path="*" element={<Error />} />
         </Routes>
       </AuthProvider>
