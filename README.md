@@ -6,6 +6,7 @@ Live demo: https://starlit-seahorse-2f7e93.netlify.app/
 [![Firebase Version](https://img.shields.io/badge/firebase-v8.6.1-orange.svg?logo=firebase)](https://firebase.google.com/docs/release-notes)
 
 TodoApp è una applicazione per la gestione di attività da svolgere, creata con React e Firebase.
+Mi sono ispirato all'applicazione di Microsoft: https://todo.microsoft.com/tasks/
 
 💻 📱 Caratteristiche
 
